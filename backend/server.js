@@ -1,0 +1,11 @@
+//start server
+const app = require("./src/app");
+const connectDb = require("./src/db/db");
+
+connectDb();
+
+const port = 3000;
+
+const server = app.listen(port, () => {
+  console.log(`app is running on port wwww.localhost//:${port}`);
+});
