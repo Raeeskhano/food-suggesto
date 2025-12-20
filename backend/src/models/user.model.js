@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, //when user was created and when updated last time.
+    timestamps: true,
   }
 );
 
