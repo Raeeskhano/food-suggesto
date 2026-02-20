@@ -7,6 +7,6 @@ connectDb();
 
 const port = 3000;
 
-const server = app.listen(port, () => {
+app.listen(port, () => {
   console.log(`app is running on port http://localhost:${port}`);
 });
