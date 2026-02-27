@@ -27,7 +27,7 @@ async function registerUser(req, res) {
     {
       id: user._id,
     },
-    process.env.JWT_SECRET
+    process.env.JWT_SECRET,
   );
 
   res.cookie("token", token);
@@ -67,7 +67,7 @@ async function loginUser(req, res) {
     {
       id: user._id,
     },
-    process.env.JWT_SECRET
+    process.env.JWT_SECRET,
   );
 
   res.cookie("token", token);
@@ -90,7 +90,7 @@ function logoutUser(req, res) {
 }
 
 async function registerFoodPartner(req, res) {
-  const { userName, email, password } = req.body;
+  const { name, email, password } = req.body;
 
   const isAccountAlredyExist = await foodPartnerModel.findOne({
     email,
@@ -102,11 +102,11 @@ async function registerFoodPartner(req, res) {
     });
   }
 
-  const hashedPassword = bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
 
-  const foodPartner = foodPartnerModel.create({
+  const foodPartner = await foodPartnerModel.create({
     email,
-    userName,
+    name,
     password: hashedPassword,
   });
 
@@ -114,7 +114,7 @@ async function registerFoodPartner(req, res) {
     {
       id: foodPartner._id,
     },
-    process.env.JWT_SECRET
+    process.env.JWT_SECRET,
   );
 
   res.cookie("token", token);
@@ -142,7 +142,7 @@ async function loginFoodPartner(req, res) {
     });
   }
 
-  const isPasswordValid = await bcrypt.compare(password, user.password);
+  const isPasswordValid = await bcrypt.compare(password, foodPartner.password);
 
   if (!isPasswordValid) {
     return res.status(400).json({
@@ -154,7 +154,7 @@ async function loginFoodPartner(req, res) {
     {
       id: foodPartner._id,
     },
-    process.env.JWT_SECRET
+    process.env.JWT_SECRET,
   );
 
   res.cookie("token", token);
