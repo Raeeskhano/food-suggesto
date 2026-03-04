@@ -52,9 +52,9 @@ const Home = () => {
     <div className="reel-container" ref={containerRef}>
       <div>Welcome To The FoodSuggesto</div>
       {videos.map((item, idx) => (
-        <section className="video-item" key={item._id}>
+        <section className="video-item" key={idx}>
           <video
-            ref={(item._id = (el) => (videoRefs.current[idx] = el))}
+            ref={(el) => (videoRefs.current[idx] = el)}
             src={item.video}
             className="reel-video"
             muted

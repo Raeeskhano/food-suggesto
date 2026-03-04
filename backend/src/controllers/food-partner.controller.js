@@ -1,11 +1,12 @@
 const foodPartnerModel = require("../models/foodpartner.model");
+const foodModel = require("../models/food.model");
 
 const getFoodPartnerById = async (req, res) => {
   const foodPartnerId = req.params.id;
 
   const foodPartner = await foodPartnerModel.findById(foodPartnerId);
-  const foodItemsByFoodPartner = await foodPartnerModel.find({
-    foodpartner: foodPartnerId,
+  const foodItemsByFoodPartner = await foodModel.find({
+    foodPartner: foodPartnerId,
   });
 
   if (!foodPartner) {
