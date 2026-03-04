@@ -13,6 +13,7 @@ async function createFood(req, res) {
     description: req.body.description,
     video: fileUploadResult.url,
     foodPartner: req.foodPartner._id,
+    address: req.body.address,
   });
 
   res.status(201).json({
