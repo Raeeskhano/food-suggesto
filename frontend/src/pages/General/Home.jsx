@@ -50,7 +50,6 @@ const Home = () => {
 
   return (
     <div className="reel-container" ref={containerRef}>
-      <div>Welcome To The FoodSuggesto</div>
       {videos.map((item, idx) => (
         <section className="video-item" key={idx}>
           <video

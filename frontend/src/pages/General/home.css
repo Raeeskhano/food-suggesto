@@ -31,8 +31,8 @@
   right: 16px;
   bottom: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
   gap: 12px;
   pointer-events: none;
 }
