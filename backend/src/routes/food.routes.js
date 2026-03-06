@@ -22,4 +22,18 @@ router.post(
 
 router.get("/", authMiddleware.authUserMiddleware, foodController.getFoodItems);
 
+// GET /api/food/... [protected Api] this is for users to like food items
+router.post(
+  "/like",
+  authMiddleware.authUserMiddleware,
+  foodController.likeFood,
+);
+
+// POST /api/food/... [protected Api] this is for users to save food items
+router.post(
+  "/save",
+  authMiddleware.authUserMiddleware,
+  foodController.saveFood,
+);
+
 module.exports = router;
