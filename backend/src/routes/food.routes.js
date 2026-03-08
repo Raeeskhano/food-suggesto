@@ -36,4 +36,11 @@ router.post(
   foodController.saveFood,
 );
 
+// GET /api/food/save [protected Api] this is for users to retrieve saved food items
+router.get(
+  "/save",
+  authMiddleware.authUserMiddleware,
+  foodController.getSaveFood,
+);
+
 module.exports = router;
